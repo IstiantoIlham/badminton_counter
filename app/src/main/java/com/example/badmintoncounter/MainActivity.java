@@ -12,6 +12,8 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+    private int teamA = 0;
+    private int teamB = 0;
     TextView tv_score_a;
     Button btn_add_a;
     Button btn_min_a;
@@ -44,44 +46,49 @@ public class MainActivity extends AppCompatActivity {
         btn_add_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String score_a = tv_score_a.getText().toString();
-                int result = Integer.parseInt(score_a) + 1;
-                tv_score_a.setText(String.valueOf(result));
+                teamA += 1;
+                tv_score_a.setText(String.valueOf(teamA));
             }
         });
 
         btn_min_a.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String score_a = tv_score_a.getText().toString();
-                int result = Integer.parseInt(score_a) - 1;
-                tv_score_a.setText(String.valueOf(result));
+                teamA -= 1;
+                if (teamA <= 0) {
+                    teamA = 0;
+                }
+
+                tv_score_a.setText(String.valueOf(teamA));
             }
         });
 
         btn_add_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String score_b = tv_score_b.getText().toString();
-                int result = Integer.parseInt(score_b) + 1;
-                tv_score_b.setText(String.valueOf(result));
+                teamB += 1;
+                tv_score_b.setText(String.valueOf(teamB));
             }
         });
 
         btn_min_b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String score_b = tv_score_b.getText().toString();
-                int result = Integer.parseInt(score_b) - 1;
-                tv_score_b.setText(String.valueOf(result));
+                teamB -= 1;
+                if (teamB <= 0) {
+                    teamB = 0;
+                }
+                tv_score_b.setText(String.valueOf(teamB));
             }
         });
 
         btn_reset.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tv_score_a.setText("0");
-                tv_score_b.setText("0");
+                teamA = 0;
+                teamB = 0;
+                tv_score_a.setText(String.valueOf(teamA));
+                tv_score_b.setText(String.valueOf(teamB));
             }
         });
 
